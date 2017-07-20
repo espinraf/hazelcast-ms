@@ -1,4 +1,4 @@
-# Demo Gradle Spring Boot , Batch, Rest, Websockets, Static pages and Hazelcast
+# Demo Gradle Spring Boot , Batch, Rest, Websockets, WebFilter, Static pages and Hazelcast
 
 
 ### Hazelcast code is from http://hazelcast.org , Microservice example
