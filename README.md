@@ -1,8 +1,9 @@
-# Demo Gradle Spring Boot , Batch, Rest, Websockets, WebFilter, Static pages and Hazelcast
+# Demo Gradle Spring Boot , Batch, Rest, Websockets, WebFilter, Static pages and Hazelcast IMap (Distributed Map)
 
 
 ### Hazelcast code is from http://hazelcast.org , Microservice example
 ### Batch from http://www.kswaughs.com/2016/03/spring-boot-batch-job-scheduler-example.html
+### Websocket https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-websocket-jetty
 
 ## Compile
 gradle clean build
@@ -42,3 +43,7 @@ http://localhost:8080/wwwroot
 http://localhost:8080/metrics
 
 http://localhost:8080/console.html
+
+
+## To run Zipkin with Docker
+docker run --rm -it -p 9411:9411 openzipkin/zipkin
