@@ -35,6 +35,12 @@ springBoot {
     buildInfo()
 }
 
+jar {
+    manifest {
+        attributes 'Implementation-Title': archivesBaseName, 'Implementation-Version': version
+    }
+}
+
 dependencies {
     compile 'com.hazelcast:hazelcast:3.8.3'
     compile("org.springframework.boot:spring-boot-starter-web") {
