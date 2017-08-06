@@ -1,0 +1,5 @@
+spring.boot.admin.url: http://11.1.0.3:8080
+
+management.security.enabled: false
+
+logging.file: "hazelcast-ms.log"
