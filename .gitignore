@@ -87,3 +87,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.settings/
+.project
+.classpath
+.vscode/
+bin/
+

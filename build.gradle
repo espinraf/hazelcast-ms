@@ -9,15 +9,21 @@ buildscript {
         maven { url "http://repo.springsource.org/libs-release" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
         classpath('net.researchgate:gradle-release:2.6.0')
         classpath "se.transmode.gradle:gradle-docker:1.2"
     }
 }
 
+
+plugins {
+    id "org.sonarqube" version "2.6.1"
+}
+
 repositories {
     mavenCentral()
 }
+
 
 apply plugin: 'idea'
 apply plugin: 'java'
@@ -28,6 +34,7 @@ apply plugin: 'build-announcements'
 apply plugin: 'maven'
 apply plugin: 'net.researchgate.release'
 apply plugin: 'docker'
+apply plugin: "jacoco"
 
 // tag::dependencies[]
 sourceCompatibility = 1.8
@@ -63,6 +70,7 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-batch")
+    compile("org.springframework.boot:spring-boot-starter-remote-shell")
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
     compile group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
 
@@ -72,6 +80,10 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile "org.springframework.shell:spring-shell:1.2.0.RELEASE"
+
+    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '4.11'
+
+    compile group: 'org.testng', name: 'testng', version:'6.8.8'
 }
 
 uploadArchives {
@@ -85,9 +97,13 @@ uploadArchives {
 }
 
 task buildDocker(type: Docker) {
+  useApi = true
+    hostUrl = 'http://11.1.0.3:5000/repository/dockerLocal/'
+    apiUsername = 'admin'
+  apiPassword = 'admin'
   baseImage = 'develar/java:latest'
   push = project.hasProperty('push')
-  tag = 'geowarin/sout-chuck-norris'
+  tag = 'espinraf/hazelcast-ms'
   addFile {
     from jar
     rename {'app.jar'}
@@ -97,3 +113,9 @@ task buildDocker(type: Docker) {
 }
 
 buildDocker.dependsOn(build)
+
+sonarqube {
+    properties {
+        property "sonar.jacoco.reportPaths", "$rootProject.buildDir/jacoco/jacoco-unit.exec"
+    }
+}
