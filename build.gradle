@@ -9,7 +9,7 @@ buildscript {
         maven { url "http://repo.springsource.org/libs-release" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.22.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.6.5")
         classpath('net.researchgate:gradle-release:2.8.1')
         classpath "se.transmode.gradle:gradle-docker:1.2"
     }
