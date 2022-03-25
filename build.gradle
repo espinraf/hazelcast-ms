@@ -71,7 +71,7 @@ dependencies {
     }
     compile("org.springframework.boot:spring-boot-starter-batch")
     compile("org.springframework.boot:spring-boot-starter-remote-shell")
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
     compile group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
 
     compile "org.springframework.cloud:spring-cloud-starter-zipkin:1.2.1.RELEASE"
