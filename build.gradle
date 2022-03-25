@@ -60,7 +60,7 @@ jar {
 }
 
 dependencies {
-    compile 'com.hazelcast:hazelcast:3.12.12'
+    compile 'com.hazelcast:hazelcast:5.1.1'
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
